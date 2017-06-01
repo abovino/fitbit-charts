@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Document</title>
+</head>
+<body>
+  {{{body}}}
+  <script type="text/javascript">
+    $( document ).ready(function() {
+      $('#update').on('click', function(e) {
+        e.preventDefault();
+        $.ajax({
+          'url': '/update',
+          'type': 'GET',
+          'success': function(data) {
+            console.log(data);
+            var rows = "";
+            for(var i = 0; i < data.length; i++) {
+              var tr = '<tr>';
+                tr += '<td>' + data[i].dateTime + '</td>';
+                tr += '<td>' + data[i].value + '</td>';
+              tr += '</tr>'
+              rows += tr;
+            }
+            console.log(rows);
+            $('tbody').empty();
+            $('tbody').append(rows);
+          }
+        })
+      })
+    });
+  </script>
+</body>
+</html>
