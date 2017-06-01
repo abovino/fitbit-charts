@@ -1,4 +1,4 @@
-#Fitbit-charts
+# Fitbit-charts
 
 ## Getting started
 
