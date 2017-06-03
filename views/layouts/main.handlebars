@@ -14,23 +14,27 @@
     $( document ).ready(function() {
       $('#update').on('click', function(e) {
         e.preventDefault();
+        var startDate = $('input[name="start-date"').val();
+        var endDate = $('input[name="end-date"').val();
+        console.log(startDate);
+        console.log(endDate);
         $.ajax({
+          'type': 'POST',
           'url': '/update',
-          'type': 'GET',
-          'success': function(data) {
-            console.log(data);
-            var rows = "";
-            for(var i = 0; i < data.length; i++) {
-              var tr = '<tr>';
-                tr += '<td>' + data[i].dateTime + '</td>';
-                tr += '<td>' + data[i].value + '</td>';
-              tr += '</tr>'
-              rows += tr;
-            }
-            console.log(rows);
-            $('tbody').empty();
-            $('tbody').append(rows);
+          'data': {startDate: startDate, endDate: endDate}
+        }).done(function(data) {
+          console.log(data);
+          var rows = "";
+          for(var i = 0; i < data.length; i++) {
+            var tr = '<tr>';
+              tr += '<td>' + data[i].dateTime + '</td>';
+              tr += '<td>' + data[i].value + '</td>';
+            tr += '</tr>'
+            rows += tr;
           }
+          console.log(rows);
+          $('tbody').empty();
+          $('tbody').append(rows);
         })
       })
     });
