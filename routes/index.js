@@ -30,9 +30,11 @@ router.get('/auth/fitbit/success', isAuthenticated, (req, res) => {
   });
 });
 
-router.get('/update', isAuthenticated, (req, res) => {
+router.post('/update', isAuthenticated, (req, res) => {
+  console.log("PAYLOAD");
+  console.log(req.body.startDate + " to " + req.body.endDate);
   var response;
-  request('https://api.fitbit.com/1/user/-/activities/steps/date/2017-05-30/30d.json', {
+  request('https://api.fitbit.com/1/user/-/activities/steps/date/' + req.body.startDate + '/' + req.body.endDate + '.json', {
     headers: {
       'User-Agent': 'Request-Promise',
       'Authorization': 'Bearer ' + req.user.accessToken
