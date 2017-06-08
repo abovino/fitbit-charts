@@ -21,4 +21,4 @@ FITBIT_CALLBACK_URL=<CALLBACK_URL_SPECIFIED_IN_FITBIT_API_SETTINGS>
 * Front-end design
 * Break up code into more modular pieces
 * Add dates form to choose date range of data
-* Incorporate D3.js for charts
+* Incorporate D3.js for charts 
